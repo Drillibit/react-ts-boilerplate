@@ -1,8 +1,13 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import { Provider } from 'react-redux';
 
-const App = () => (
-    <p>Hello!</p>
-);
+class App extends React.Component {
+render() {
+    return (
+        <p>Hello!</p>
+    );
+}
+}
 
 export default hot(App);
