@@ -1,11 +1,11 @@
 import React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Provider } from 'react-redux';
+import { MainInput } from './Components/Input';
 
 class App extends React.Component {
 render() {
     return (
-        <p>Hello!</p>
+        <MainInput />
     );
 }
 }
