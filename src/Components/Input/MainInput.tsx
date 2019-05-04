@@ -8,6 +8,9 @@ const StyledWrapper = styled.div`
 const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
+`;
+
+const StyledMainBlock = styled.div`
     background-image: linear-gradient(280deg, #68E8D1, #4BA1EE);
     min-height: 200px;
     transform: all ease-in .3s;
@@ -18,7 +21,7 @@ const StyledForm = styled.form`
     width: 60%;
     margin: 60px auto 0 auto;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
 `;
 
 const StyledInput = styled.input`
@@ -28,7 +31,7 @@ const StyledInput = styled.input`
     outline: none;
     color: #fff;
     font-size: 1.4rem;
-    width: 100%;
+    width: 82%;
 `;
 
 const StyledLabel = styled.label`
@@ -36,9 +39,9 @@ const StyledLabel = styled.label`
     font-family: Roboto;
     position: absolute;
     transition: 0.2s ease all;
-    top: 0;
+    top: 48px;
     ${StyledInput}:focus ~ &, ${StyledInput}:valid ~ &{
-        top: -15px;
+        top: 26px;
         font-size: .7rem;
     } 
 `;
@@ -49,19 +52,55 @@ const StyledFieldset = styled.fieldset`
     position: relative;
     border: none;
     width: 70%;
+    margin: 5% auto;
+`;
+
+const StyledHeader = styled.h1`
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+`;
+
+const StyledButton = styled.button`
+    border-radius: 3px;
+    border: 1px solid #4BA1EE; 
+    padding: 7px 15px;
+    transition: all ease-in .2s;
+    color: #4BA1EE;
+    &:hover {
+        box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);        
+    }
+`;
+
+const StyledInnerBlock = styled.div`
+    display: flex;
+    justify-content: space-between;
 `;
 
 export const MainInput = () => {
     const [ meetUpName, setName ] = useState<string>('');
+    const [ setEventName, confirmName] = useState<boolean>(false);
     return (
         <StyledWrapper>
             <StyledForm>
-                <StyledFieldset>
-                    <StyledInput required name="eventName" type="text" value={meetUpName} onChange={(e) => setName(e.target.value)} />
-                    <StyledLabel htmlFor="eventName">
-                        Event Name
-                    </StyledLabel>
-                </StyledFieldset> 
+                <StyledMainBlock>
+                    <StyledFieldset>
+                        <StyledHeader>SetUp Event.</StyledHeader>
+                        <StyledInnerBlock>
+                            <StyledInput required name="eventName" type="text" value={meetUpName} onChange={(e) => setName(e.target.value)} />
+                            <StyledLabel htmlFor="eventName">
+                                Event Name
+                            </StyledLabel>
+                            <StyledButton onClick={(e) => {
+                                    e.preventDefault();
+                                    confirmName(!setEventName);
+                                }}>
+                                    Set Event
+                            </StyledButton>
+                        </StyledInnerBlock>
+                    </StyledFieldset> 
+                </StyledMainBlock>
             </StyledForm>
         </StyledWrapper>  
     );
